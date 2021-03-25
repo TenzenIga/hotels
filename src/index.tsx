@@ -1,12 +1,32 @@
+import {BrowserRouter as Router  } from "react-router-dom";
+import {Provider} from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import reportWebVitals from './reportWebVitals';
+import { createStore, applyMiddleware } from 'redux';
+
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import rootReducer from "./store/rootReducer";
 
+
+import { watchLoadHotels } from "./saga/sagas";
+import createSagaMiddleware from "redux-saga";
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(watchLoadHotels);
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

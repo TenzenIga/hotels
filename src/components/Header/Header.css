@@ -1,0 +1,26 @@
+header {
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logout {
+    margin: 26px 30px 0 auto;
+    display: block;
+    position: relative;
+    border: none;
+    background: transparent;
+    color: #41522E;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout::after {
+    content: "";
+    position: absolute;
+    background: url("../../assets/logout.png") no-repeat;
+    background-size: contain;
+    left: 55px;
+    width: 18px;
+    height: 18px;
+}

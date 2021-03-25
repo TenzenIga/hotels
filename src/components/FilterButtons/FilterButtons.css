@@ -1,0 +1,30 @@
+.btn-group{
+    display: flex;
+    margin-top: 32px;
+    cursor: pointer;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    color: #99A0A3;
+    padding: 4px 8px;
+}
+
+.filter:not(:first-child){
+    margin-left: 8px;
+}
+
+.filter.active {
+    border: 1px solid #41522E;
+    color: #41522E;;
+}
+
+.btn-control {
+    margin-left: 9px;
+    display: flex;
+    flex-direction: column;
+    color: #99A0A3;;
+}

@@ -1,0 +1,35 @@
+.hotel-info{
+    flex: 1;
+}
+
+.hotel-info__header {
+    font-weight: 300px;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hotel-info__date {
+    margin-top: 5px;
+    color: #878787;
+    font-weight: 400;
+}
+
+.hotel-info__footer {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating svg:not(:first-child){
+    margin-left: 3px;
+}
+.price {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.price span {
+    color: #878787;
+    font-size: 11px;
+}
