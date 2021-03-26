@@ -28,3 +28,7 @@
     flex-direction: column;
     color: #99A0A3;;
 }
+
+.down {
+    transform: rotate(180deg);
+}

@@ -25,16 +25,12 @@ const mapDispatch = (dispatch:Dispatch) => {
   
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-type props = PropsFromRedux & {
-
-};
-  
 interface IFormInputs {
     login: string
     password: string
   }
 
-function Login(props:props) {
+function Login(props:PropsFromRedux) {
     const {login, auth} = props;
 
     const { register,errors,  handleSubmit } = useForm<IFormInputs>();

@@ -1,25 +1,68 @@
 import React from 'react'
-import {ReactComponent as ArrowUp} from '../../assets/arrow-up.svg';
-import {ReactComponent as ArrowDown} from '../../assets/arrow-down.svg';
+import {ReactComponent as SelectUp} from '../../assets/up.svg';
+import {ReactComponent as EmptySelect} from '../../assets/empty-select.svg';
 import './FilterButtons.css';
+import { bindActionCreators, Dispatch } from 'redux';
+import { connect, ConnectedProps } from 'react-redux';
+import { sortFavorites } from '../../store/Favorites/actions';
+import { IStore } from '../../store/rootReducer';
+import { compareValues } from '../../utils';
 
-export default function FilterButtons() {
+
+const mapState = (state:IStore) =>({
+    favorites:state.favorites
+  });
+
+const mapDispatch = (dispatch:Dispatch) => {
+    return{
+        sortFavorites:bindActionCreators(sortFavorites, dispatch)
+    }
+  }
+
+const connector = connect(
+    mapState,
+    mapDispatch
+  );
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+
+ function FilterButtons(props:PropsFromRedux) {
+    const {favorites, sortFavorites} = props;
+    const [sortBy, setsortBy] = React.useState('');
+    const [isInc, setIsInc] = React.useState(false);
+    const name = 'Рейтинг';
+    const filterBtn = isInc ? <SelectUp /> : <SelectUp className='down' />
+    
+    const handleSort = (property:string) =>{
+        let sortedHotels;
+        if(isInc){
+            sortedHotels = favorites.sort(compareValues(property));
+            setIsInc(false)
+        }else{
+            sortedHotels = favorites.sort(compareValues(property, 'desc'))
+            setIsInc(true)
+        }
+        setsortBy(property)
+        sortFavorites(sortedHotels)
+    }
+
     return (
         <div className="btn-group">
-            <div className='filter active'>
-                <span>Рейтинг</span>
+            <div className={`filter ${sortBy ==='stars' ? 'active' : ''}`} onClick={()=>handleSort('stars')} >
+                <span>{name}</span>
                 <div className="btn-control">
-                    <ArrowUp />
-                    <ArrowDown />
+                {sortBy === 'stars' ? filterBtn : <EmptySelect />}
                 </div>
             </div>
-            <div className='filter'>
+            <div className={`filter ${sortBy ==='priceAvg' ? 'active' : ''}`} onClick={()=>handleSort('priceAvg')} >
                 <span>Цена</span>
                 <div className="btn-control" >
-                    <ArrowUp />
-                    <ArrowDown />
+                    {sortBy === 'priceAvg' ? filterBtn : <EmptySelect />}
                 </div>
             </div>
         </div>
     )
 }
+
+export default connector(FilterButtons);

@@ -7,7 +7,6 @@ type props = {
 
 export default function Rating(props:props) {
     const {value} = props
-    const [rating, setRating] = React.useState((value) || 0);
 
  
     return (

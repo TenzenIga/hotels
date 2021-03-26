@@ -1,3 +1,5 @@
+import { ISearchFormInputs } from "../../components/SearchForm/SearchForm";
+
 export const LOAD_HOTELS = 'LOAD_HOTELS';
 export const SET_HOTELS = 'SET_HOTELS';
 export const FETCH_HOTELS_FAIL = 'FETCH_HOTELS_FAIL';
@@ -6,13 +8,13 @@ export const FETCH_HOTELS_FAIL = 'FETCH_HOTELS_FAIL';
 
 
 
-export type inputData = {
-    location:string
-    date:string
-    days:string
-}
+
 
 export interface IHotelInfo {
+    location:{
+        name:string
+    }
+    hotelId:number
     name:string
     priceAvg:number
     hotelName:string
@@ -23,41 +25,41 @@ export interface IHotelInfo {
 
 
 
-export interface setHotels {
+export interface ISetHotels {
     type: typeof SET_HOTELS
     payload:IHotelInfo[]
   }
   
 export const setHotels = (dataFromServer:IHotelInfo[])=>{
-    return{
+    return {
         type: SET_HOTELS,
         payload: dataFromServer
     }
 }
 
 
-export interface fetchingError {
+export interface IFetchingError {
     type: typeof FETCH_HOTELS_FAIL,
     payload: string
   }
 
 export const fetchingError = (error:string)=>{
-    return{
+    return {
         type:FETCH_HOTELS_FAIL,
         payload:error
     }
 }
 
-export interface loadHotels {
+export interface ILoadHotels {
     type: typeof LOAD_HOTELS,
-    payload:inputData
+    payload:ISearchFormInputs
 }
 
-export const loadHotels = (inputData:inputData)=>{
-    return{
+export const loadHotels = (inputData:ISearchFormInputs)=>{
+    return {
         type:LOAD_HOTELS,
         payload:inputData
     }
 }
 
-export type HotelsAction = setHotels | loadHotels | fetchingError; 
+export type HotelsAction = ISetHotels | ILoadHotels | IFetchingError; 

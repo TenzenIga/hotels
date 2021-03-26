@@ -1,7 +1,7 @@
 import { IHotelInfo, SET_HOTELS, FETCH_HOTELS_FAIL, LOAD_HOTELS, HotelsAction } from "./actions"
 
 
-interface HotelsState {
+export interface HotelsState {
     hotels:IHotelInfo[],
     loading:boolean
     error:null | string

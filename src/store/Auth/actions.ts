@@ -3,11 +3,8 @@
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT ="LOGOUT";
 
-  export interface logOut {
-    type: typeof LOGOUT
-  }
-  
-  export interface LoginSuccess {
+ 
+  export interface ILoginSuccess {
     type: typeof LOGIN_SUCCESS,
   }
 
@@ -18,6 +15,9 @@ export const loginSuccess = () =>{
     }
 }
 
+export interface ILogOut {
+  type: typeof LOGOUT
+}
 
 
 export const logOut = ()=>{
@@ -26,4 +26,4 @@ export const logOut = ()=>{
     }
 }
 
-export type AuthAction = LoginSuccess | logOut; 
+export type AuthAction = ILoginSuccess | ILogOut; 

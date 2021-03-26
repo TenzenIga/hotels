@@ -8,12 +8,15 @@ ul.breadcrumbs {
     font-weight: 500;
 }
 
+ul.breadcrumbs li {
+    position: relative;
+}
+
 ul.breadcrumbs li:not(:first-child) {
     margin-left: 48px;
-    position: relative;
     
 }
-ul.breadcrumbs li+li::before {
+ul.breadcrumbs li:first-child::after {
     content: "";
     display: block;
     background: url("../../assets/arrow.png");
@@ -23,5 +26,5 @@ ul.breadcrumbs li+li::before {
     height: 18px;
     top: 35%;
     position: absolute;
-    right: 130px;
+    left: 110px;
 }
