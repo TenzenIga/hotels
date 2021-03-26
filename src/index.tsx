@@ -22,7 +22,7 @@ const store = createStore(
 sagaMiddleware.run(watchLoadHotels);
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={process.env.PUBLIC_URL} >
+    <Router >
       <Provider store={store}>
         <App />
       </Provider>
