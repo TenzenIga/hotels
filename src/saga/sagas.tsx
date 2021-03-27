@@ -11,7 +11,7 @@ const call: any = Effects.call;
 
 
 function fetchHotels(data:ISearchFormInputs){
-    return axios.get(`http://engine.hotellook.com/api/v2/cache.json?location=${data.location}&currency=rub&checkIn=${data.date}&checkOut=${data.checkOut}&limit=10`)
+    return axios.get(`https://engine.hotellook.com/api/v2/cache.json?location=${data.location}&currency=rub&checkIn=${data.date}&checkOut=${data.checkOut}&limit=10`)
 }
 
 function* workLoadHotels(action:any){
